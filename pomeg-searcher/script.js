@@ -37,6 +37,6 @@ function compute() {
 			i += 1;
 		}
 	}
-	console.log(tid, sid, tid_sum);
-	console.log(frames.join());
+	const output = document.getElementById("output");
+	output.innerText = frames.join(",");
 }
