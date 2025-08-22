@@ -34,4 +34,10 @@ img {
 pre {
     overflow-x:auto
 }
+input {
+	color-scheme: dark;
+}
+button {
+	color-scheme: dark;
+}
 /*# sourceMappingURL=minimal.min.css.map */
