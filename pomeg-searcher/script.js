@@ -58,6 +58,8 @@ function compute() {
 
 	const output = document.getElementById("output");
 	output.innerHTML = `
+<h4>SID is: ${sid}</h4>
+<br>
 <h4>SID -1:</h4> ${m1.join(",")}
 <h4 style="color: yellow">correct SID:</h4> <p style="color: yellow">${exact.join(",")}</p>
 <h4>SID +1:</h4> ${p1.join(",")}`;
