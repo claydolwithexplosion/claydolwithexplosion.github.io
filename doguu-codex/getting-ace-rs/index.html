@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="../simple.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+	<header>
+		<h1>The Dogū Codex</h1>
+	</header>
+	<main>
+		<h2 id="getting-ace-in-pokemon-ruby-sapphire"><u>Getting ACE in Pokemon Ruby/Sapphire</u></h2>
+			<p>In Pokemon Ruby/Sapphire, for a long time, it was assumed that native ACE (without trading) was impossible. That turned out not to be true, as BluMagma discovered a way to get native ACE, but it required a very specific TID/SID and another pretty hard RNG manipulation.</p>
+			<p>Then, I started looking into the game. I wanted to have all Gen 3 methods to have viable, native ACE for casual players. Whether I succeeded fully or not is debatable, but I did at least find a non-post-game method, that ended up making the glitched speedruns of the game a multitude faster.</p>
+			<p>A big shoutout and credits to (it-is-)final/togebit, who put a lot of time into co-creating and improving this casual setup, specifically the last part of making a good nickname setup and getting the Celebi.</p>
+			<p>This new method doesn't need a highly specific TID anymore, but it doesn't work on all existing saves either, it works on about 60% of all saves. You can check whether your TID is eligible, by looking at its lowest decimal digit:</p>
+			<ul>
+				<li>If your TID ends in 0,1,2,3,8 or 9, then this method does work for your save file</li>
+				<li>If your TID ends in 4,5,6 or 7, then this method sadly doesn't work</li>
+			</ul>
+			<p>Also, this method requires one RNG manipulation, with one input with a window of one frame, and one input with a window of two frames.</p>
+			<details>
+				<summary>Manipless ACE?</summary>
+				<p>I'm personally not a big fan of RNG manipulation, and know that it lowers the accessability of this method quite a bit, but believe me,
+				I tried a lot of things, scavenged probably the majority of the pokeruby decompilation project (huge shoutouts to pret, without whomst this wouldn't have been possible),
+				but all ideas for manipless ACE for all TIDs failed, some right before the finish line.</p>
+				<p>If anyone with good technical knowledge wants to search for a way to get ACE maniplessly, feel free to do so, there is a lot of potential with the mail glitch, though I'd say I explored most promising leads.</p>
+				<p>One way to potentially get manipless ACE would be to get 0x00fd (so bytes 0xfd 0x00) into a mail content (0x44fc is possible but doesn't do anything here), this would likely make it manipless and work on all saves, with some adjustments.</p>
+			</details>
+		<h3 id="summary">Summary</h3>
+			<ul>
+				<li><a href="#prerequisites">Prerequisites</a></li>
+				<li><a href="#preparing-the-rng-manip">Preparing the RNG manip</a></li>
+				<li><a href="#doing-the-rng-manip">Doing the RNG manip</a></li>
+				<li><a href="#winning-the-contest">Winning the contest</a></li>
+				<li><a href="#doing-the-mail-glitch">Doing the mail glitch</a></li>
+				<li><a href="#preparing-the-box-names">Preparing the box names</a></li>
+				<li><a href="#getting-the-celebi>">Getting the Celebi</a></li>
+				<li><a href="#finishing-the-setup">Finishing the setup</a></li>
+			</ul>
+		<h3 id="prerequisites">Prerequisites</h3>
+			<p>To get ACE in Pokemon Ruby/Sapphire, you need some prerequisites:</p>
+			<ul>
+				<li>As mentioned above, your TID needs to end in 0,1,2,3,8 or 9. Technically it doesn't depend on the TID, but the Mauville Old Man, but unless you have access to record mixing, this is directly related to the TID.</li>
+				<li>For this casual route, you need to ideally have beaten the 6th Gym and have gotten Fly.</li>
+				<li>You need a Pikachu. Pikachu can be caught right at the beginning of the Safari Zone.</li>
+				<li>To get into the Safari Zone, you need to have the Pokeblock Case (you can get the Pokeblock case in Slateport City, in the contest hall).</li>
+				<li>Since this will use the mail glitch, you'll need some mail (10+, of any kind) and a Pokemon with Thief or Covet (Linoone learns Covet at level 35).</li>
+				<li>To do the RNG manip, it's recommended to have either Eon Timer or Flowtimer installed, though there are online alternatives too (you just need some way to do a custom chain manip).</li>
+				<li>A Pokemon with Sweet Scent, to make the RNG manip possible without static encounters (wild Oddish have it).</li>
+				<li>One Thunderstone. Can be found either in New Mauville, or traded for a yellow shard with the treasure hunter (yellow shards can be gotten from wild Chinchou, 5% chance for Chinchou to hold one).</li>
+			</ul>
+			<p>All of these, except for the TID, can be gotten on any save file, though getting a Thunderstone can take some time if you already used yours, and there aren't any yellow shards left in the overworld.</p>
+		<h3 id="preparing-the-rng-manip">Preparing the RNG manip</h3>
+			<p>As mentioned in the prerequisites, you need either Eon Timer, Flowtimer, or some other timer that allows for chain manips (abbreviated "C" in some programs), and you'll want to use <a href="https://lincoln-lm.github.io/ten-lines/?page=1&targetInitialSeed=03C0&advancesMin=1600&advancesMax=2600">this website</a> to calibrate the manip. The values you want to give to your timer are 960 frames for the first manip, and 1737 or 1738 for the second manip.</p>
+			<p>There are multiple ways to do this RNG manip, but the only universal way, that works with both alive and dead battery, is the painting RNG manip, so I'll only be covering that in this tutorial. To do it, you have to go to a contest hall (this guide assumes you go to Verdanturf) and save in front of a painting. Make sure you have the Pokemon with Sweet Scent in your party, and ideally a free slot too. This will be your reset point each time after you fail the manip. Then:</p>
+		<h3 id="doing-the-rng-manip">Doing the RNG manip</h3>
+			<ol>
+				<li>Hold down A,B,Start and Select (once you release any button, the game will soft reset).</li>
+				<li>Start your timer of choice and release one of the buttons at the same time to start the game and the timer simultaneously.</li>
+				<li>Quickly skip through the intro and title screen and get ready to hit A on the correct frame.</li>
+				<li>Hit A on the correct frame to open the painting. This will depend on your settings of your timer, the default for Eon Timer is the 6th beep, but I like to use the 5th for example.</li>
+				<li>Quickly close the painting, go outside and onto a patch of grass on Route 117 (so east of Verdanturf).</li>
+				<li>Open your party menu and go to your sweet scent Pokemon, get ready to press A on the correct frame.</li>
+				<li>Hit A on the correct frame to use Sweet Scent and encounter a wild Pokemon. Capture the Pokemon.</li>
+				<li>Open the summary of the caught Pokemon, and <b>enter its species and nature</b> into <a href="https://lincoln-lm.github.io/ten-lines/?page=1&targetInitialSeed=03C0&advancesMin=1600&advancesMax=2600">the website</a> mentioned above.</li>
+				<li>Now, into the new field "IV Calculator", enter the following numbers (separated by a space each):
+					<ol>
+						<li>The level of the Pokemon</li>
+						<li>The HP</li>
+						<li>The ATK</li>
+						<li>The DEF</li>
+						<li>The SP.ATK</li>
+						<li>The SP.DEF</li>
+						<li>The SPD</li>
+					</ol>
+				</li>
+				<li>On the bottom, click on "Submit".</li>
+				<li>There should now be a list at the bottom of frames you could have hit. You want to have hit a seed of "3C0", which means the first manip of opening the painting was right, and frame 1737 or 1738 (both work), which means that you hit Sweet Scent at the right time. Depending on your timer, you can adjust the offsets based on what frame you hit, and start with step 1 again if you didn't hit the correct frames.</li>
+			</ol>
+			<p>Here are the two frames that work and the corresponding Pokemon:</p>
+			<table>
+				<tr>
+					<th>Frame</th>
+					<th>Species</th>
+					<th>Level</th>
+					<th>PID</th>
+					<th>Nature</th>
+					<th>Gender</th>
+					<th>HP</th>
+					<th>ATK</th>
+					<th>DEF</th>
+					<th>SP.ATK</th>
+					<th>SP.DEF</th>
+					<th>SPD</th>
+				</tr>
+				<tr>
+					<td>1737</td>
+					<td>Zigzagoon</td>
+					<td>13</td>
+					<td>00FDF532</td>
+					<td>Adamant</td>
+					<td>♀</td>
+					<td>36</td>
+					<td>15</td>
+					<td>16</td>
+					<td>11</td>
+					<td>17</td>
+					<td>22</td>
+				</tr>
+				<tr>
+					<td>1738</td>
+					<td>Zigzagoon</td>
+					<td>13</td>
+					<td>2A1B00FD</td>
+					<td>Sassy</td>
+					<td>♂</td>
+					<td>35</td>
+					<td>13</td>
+					<td>17</td>
+					<td>15</td>
+					<td>16</td>
+					<td>21</td>
+				</tr>
+			</table>
+		<h3 id="winning-the-contest">Winning the contest</h3>
+			<p>Now, the hardest part (in my opinion) is over, and you need to win a contest with the RNG manipped Pokemon you just caught. In our case, we need to win a contest with the Zigzagoon. These contests are pretty RNG-reliant, I'd recommend entering a cute contest, and teaching the Zigzagoon Attract before.</p>
+			<p>The only important thing is, that you win the contest, and don't enter any contest after you win that one (or you'll have to win with the Zigzagoon again).</p>
+		<h3 id="doing-the-mail-glitch">Doing the mail glitch</h3>
+			<p>Compared to the last step, this should be pretty easy. You need your Pokemon with Covet/Thief, another Pokemon for a double battle, and the actual available double battle. If you beat every double battle already, you can quickly leave and reenter route 117 until the double battle there is available again.</p>
+			<p>First though, you have to make sure that you have <b>exactly 8</b> mails in your mailbox inside your PC. For that, first look into your mailbox (open the PC, choose [your name]'s PC, then go to the Mailbox) and count how many mails are already in there. Now, give some Pokemon a mail, enter any word(s) and finish the mail, then go to the Pokemon's mail menu and remove it to send it to the PC. Do this, until you have 8 mails in there.</p>
+			<p>Before entering the double battle make sure that your Pokemon with Covet/Thief is NOT holding any item or mail itself, and that the other Pokemon IS holding a mail. Start the double battle, and use Covet/Thief on your own Pokemon that's holding the mail. You can either win or lose the battle, it doesn't matter.</p>
+			<p>After the double battle, your Pokemon with Thief/Covet should be holding mail, and the other Pokemon should have no item, as expected. Be sure that when you remove this mail, you are NOT inside a building, and are ideally on a route that is known to work, for example route 117.</p>
+			<p>Now you should have 8 normal mails and one glitch mail in the mailbox. For this setup to work though, you need to do the mail glitch again (deposit and withdraw your two Pokemon who did the glitch mail to be safe). As mentioned above, quickly entering and leaving route 117 multiple times will get you another double battle pretty quickly.</p>
+			<p>As before, remove this glitch mail on a safe route (like route 117), so you have 8 normal mail and 2 glitch mail in your PC (in that specific order). And that's it! Your mailbox is ready for the glitch.</p>
+		<h3 id="preparing-the-box-names">Preparing the Box names</h3>
+			<p>Now, this is where the tutorial diverges a little, based on your game language and <b>revision</b>.</p>
+			<p>If you are on non-English, your revision doesn't really matter, but on English the box names are different. To find out your revision on English, you can go into any Pokemon Center onto the upper floor, and talk to the lady on the right. Her text is different depending on your revision:</p>
+			<ul>
+				<li>Revision 0:</li>
+				<code>Welcome to the POKéMON CABLE CLUB
+				RECORD CENTER.
+				You may mix your records as a TRAINER
+				with the records of your friends.
+				Would you like to mix records?</code>
+				<li>Revision 1+:</li>
+				<code>Welcome to the POKéMON CABLE CLUB
+				RECORD CORNER.
+				You may mix your records as a TRAINER
+				with the records of your friends.
+				Would you like to mix records?</code>
+			</ul>
+			<p>The difference is very subtle, only in revision 0 it is called "RECORD CENTER" in that dialogue, if it's "RECORD CORNER" you're on a newer revision.</p>
+			<p>Now for the actual box names:</p>
+			<ul>
+				<li>English, revision 0: (credit to me and it-is-final)</li>
+				<code><pre>
+Box  1:	F I m o A B R I	[FImoABRI]
+Box  2:	- U H W Q Q H 0	[-UHWQQH0]
+Box  3:	9 K ♂ ‥ P G    	[9K♂‥PG]
+Box  4:	A B F P G      	[ABFPG]
+Box  5:	‥ G P G V H B I	[‥GPGVHBI]
+Box  6:	_ f t _ _ B H  	[ ft  BH]
+Box  7:	A A z P . I    	[AAzP.I]
+Box  8:	A k Q B H      	[AkQ?H]
+Box  9:	j F B H H o B H	[jF?HHoBH]
+Box 10:	‥ o o          	[‥oo]
+Box 11:	A              	[A]
+Box 12:	A D I Q I      	[ADIQI]
+Box 13:	U U B H _ . , I	[UUBH .,I]
+Box 14:	A A A _ F S u Q	[AAA FSuQ]
+
+Box 1 Wallpaper:	Polka-Dot
+Box 2 Wallpaper:	Forest
+Box 9 Wallpaper:	Forest
+Box 10 Wallpaper:	Plain
+</pre></code>
+				<li>English, revision 1: (credit to me and it-is-final)</li>
+				<code><pre>
+Box  1:	F I m o A B R I	[FImoABRI]
+Box  2:	- U H W Q Q H 0	[-UHWQQH0]
+Box  3:	9 K ♂ ‥ P G    	[9K♂‥PG]
+Box  4:	A B F P G      	[ABFPG]
+Box  5:	‥ G P G V H B I	[‥GPGVHBI]
+Box  6:	_ f t _ _ B H  	[ ft  BH]
+Box  7:	A A y O . I    	[AAyO.I]
+Box  8:	A 0 O R H      	[A0ORH]
+Box  9:	2 R R H H o B H	[2RRHHoBH]
+Box 10:	‥ o o          	[‥oo]
+Box 11:	A              	[A]
+Box 12:	A D I Q I      	[ADIQI]
+Box 13:	U U B H _ . , I	[UUBH .,I]
+Box 14:	A A A _ F S u Q	[AAA FSuQ]
+
+Box 1 Wallpaper:	Polka-Dot
+Box 2 Wallpaper:	Forest
+Box 9 Wallpaper:	Forest
+Box 10 Wallpaper:	Plain
+</pre></code>
+			</ul>
+			<p>Enter the box names for your language/revision into the your PC storage, and also change the wallpapers. Make sure that Box 12-14 are empty (in terms of Pokemon inside the boxes). Move any Pokemon you have in there into other boxes.</p>
+		<h3 id="getting-the-celebi">Getting the Celebi</h3>
+			<p>This is where we get a very special Celebi, which will be our ACE entry point in the future.</p>
+			<p>Make sure you have everything prepared:</p>
+			<ol>
+				<li>You have a Pikachu in your party.</li>
+				<li>You have a Thunderstone in your item bag.</li>
+				<li>You have prepared the mailbox with 8 normal mails and 2 glitch mails.</li>
+				<li>You have the box names and wallpapers entered correctly.</li>
+				<li>You have some Pokeballs (ideally super balls or better) in your bag.</li>
+				<li>You have no Pokemon in Boxes 12-14.</li>
+			</ol>
+			<p>If you have done all of these steps, save in front of the PC in the Verdanturf Contest Hall. This will be your reset point if something fails, but also if everthing worked out. <b>IMPORTANT:</b> Reset the game after the saving completes!</p>
+			<p>To get the Celebi, you have to:</p>
+			<ol>
+				<li>Open your mailbox, and scroll down to the first glitch mail (so in the 9th slot, not the 10th).</li>
+				<li>The name of the mail should take quite some time to fully render. Now, open the menu for that mail.</li>
+				<li>A veeeeery long text should be printed out veeery slowly. Hold down the B button while this text scrolls through, it will take around 2 minutes to scroll through that way. Don't worry, the text is still rendering, even if all it prints are empty spaces!</li>
+				<li>After the text has fully scrolled through, close the mailbox and exit the PC. Optionally, set your text speed to fast again (the text will have resetted it to slow).</li>
+				<li>Check your player name. It should also be a very long text.</li>
+				<li>Evolve your Pikachu to a Raichu by giving it the Thunderstone.</li>
+				<li>Go outside, and get a wild encounter in the grass.</li>
+				<li>Catch that Pokemon.</li>
+				<li>When asked for a nickname, choose "Yes" and give it the nickname "AAAkk v", so three uppercase A's, two lowercase k's, one space, and one lowercase v.</li>
+				<li>After giving the nickname, <i>walk back to the Contest Hall</i>. Don't use Fly, don't get any other encounters.</li>
+				<li>Lastly, talk to the lady to enter a contest, and choose to enter any contest. It doesn't matter which Pokemon you choose here.</li>
+			</ol>
+			<p>After the last step, the game should soft reset. This is the intended behaviour. If it crashes, you likely made a typo when entering the box names or had an error with the wallpapers. Recheck that you have the exact same box names in that case.</p>
+			<p>The intended result is that you are back to your save you made before, with the difference that there is a special Celebi inside Box 14 in the last slot. If there is a bad egg instead, or nothing at all (or an invisible bad egg), there is probably also some typo in your box names.</p>
+			<p>Don't look at the summary of this Celebi yet; this would crash. To use this Celebi, we need to put some Pokemon with specific nicknames into Box 1.</p>
+		<h3 id="finishing-the-setup">Finishing the setup</h3>
+			<p>To finish the setup, you need some Pokemon with specific nicknames in specific slots in Box 1. In total you'll need 4 Pokemon, these should be Pokemon you don't care about, because they need to stay in the boxes for the setup to work. These four Pokemon should get these nicknames:</p>
+			<code><pre>
+Nickname 1: F ♂ L B z 6 L ’ F C	[F♂LBz6L’FC] ← the ’ is the right single quote on the keyboard
+Nickname 2: A A A A Z s        	[AAAAZs]
+Nickname 3: 3 m T n y _ _ v    	[3mTny  v]
+Nickname 4: b F . o x B E s    	[bF.oxBEs]
+</pre></code>
+			<p>With the nicknamed Pokemon ready, you need to place them in a specific pattern inside Box 1:</p>
+			<code><pre>
+1 2 - - - -
+- - - - - -
+3 - - - - -
+- - - - - -
+4 - - - - -
+
+(- means that this can be any Pokemon, it doesn't have to be kept empty)
+</pre></code>
+			<p>So the Pokemon with Nickname 1 should be in Box 1 Slot 1, the one with Nickname 2 should be in Box 1 Slot 2, Nickname 3 in Slot 13 (third row, first column) and Nickname 4 in Slot 25 (fifth row, first column).</p>
+			<p>You're almost done; now you have to do a short box name code to finalize it (and test that it works):</p>
+			<code><pre>
+For English:
+Box 1: t R R n ♂ F G m	[tRRn♂FGm]
+Box 2: _ o o D I F o U	[ ooDIFoU]
+Box 3: B n            	[Bn]
+
+For French/Italian/German/Spanish:
+Box 1: t R R n ♂ F G m	[tRRn♂FGm]
+Box 2: A A A H I C o h	[AAAHICoh]
+Box 3: B n            	[Bn]
+</pre></code>
+			<p>Now take the Celebi from Box 14 into your party (or a different Box) so that Boxes 12-14 are empty again, save the game, and look at the summary of the Celebi. Nothing much should happen, so close the summary, and go into the PC storage again, and look at the Pokemon with the third nickname again (so the one in Slot 25, third row, first column). Its nickname should have changed to "3mTnbね v". If that's the case, you can remove the Pokemon with the 4th nickname from the boxes (release it, rename it, whichever you want). The final layout of Box 1 should look like this:</p>
+			<code><pre>
+1 2 - - - -
+- - - - - -
+3 - - - - -
+- - - - - -
+- - - - - -
+
+(- means that this can be any Pokemon, it doesn't have to be kept empty)
+</pre></code>
+			<p>And, <i>finally</i>, the setup is done, and you can execute codes (of which there are currently very few). Congratulations if you made it through!</p>
+	</main>
+	<footer>
+	Subscribe to Technoblade
+	</footer>
+</body>
+
+</html>
