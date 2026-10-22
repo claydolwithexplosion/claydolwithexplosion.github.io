@@ -1,0 +1,7 @@
+Box  1: C O D 7 ? w c w [COD7?wcw]
+Box  2: n ! L O u b v ? [n!LOubv?]
+Box  3: E ? 8 v 4 R 7 R [E?8v4R7R]
+Box  4: B N I A S A A O [BNIASAAO]
+Box  5: ! u e A A P 6 D [!ueAAP6D]
+Box  6: A U h f 0 Q B H [AUhf0QBH]
+Box  7: a h I D A g _ _ [ahIDAg  ]

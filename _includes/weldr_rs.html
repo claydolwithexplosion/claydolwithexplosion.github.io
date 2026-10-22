@@ -1,0 +1,37 @@
+{% capture _ %}{% increment tabcnt %}{% endcapture %}
+{% assign l2cnt = tabcnt %}
+<style>
+	#tab{{ l2cnt }}1:checked ~ .tab-bar label[for="tab{{ l2cnt }}1"],
+	#tab{{ l2cnt }}2:checked ~ .tab-bar label[for="tab{{ l2cnt }}2"] {
+		border: 2px solid var(--highlight);
+	}
+	#tab{{ l2cnt }}1:checked ~ .panels #panel{{ l2cnt }}1,
+	#tab{{ l2cnt }}2:checked ~ .panels #panel{{ l2cnt }}2 {
+		display: block;
+		padding: 0.3rem 0.3rem;
+		border: 2px solid var(--border);
+		border-radius: 6px 6px 0 0;
+		border-bottom: 2px solid var(--border);
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+		margin: 3px;
+	}
+</style>
+
+<div class="tabs">
+	<input type="radio" name="tab{{ l2cnt }}" id="tab{{ l2cnt }}1" checked/>
+	<input type="radio" name="tab{{ l2cnt }}" id="tab{{ l2cnt }}2"/>
+
+	<div class="tab-bar">
+		<label for="tab{{ l2cnt }}1">English</label>
+		<label for="tab{{ l2cnt }}2">French, Italian, German, Spanish</label>
+	</div>
+	<div class="panels">
+<div class="panel" id="panel{{ l2cnt }}1">
+{%-include weldr_generic.md game="rs_en" emu="old_emu"-%}
+</div>
+<div class="panel" id="panel{{ l2cnt }}2">
+{%-include weldr_generic.md game="rs_non_en" emu="old_emu"-%}
+</div>
+	</div>
+</div>

@@ -1,0 +1,36 @@
+{% capture _ %}{% increment tabcnt_v0s %}{% endcapture %}
+<style>
+	#tab0s{{ tabcnt_v0s }}1:checked ~ .tab-bar label[for="tab0s{{ tabcnt_v0s }}1"],
+	#tab0s{{ tabcnt_v0s }}2:checked ~ .tab-bar label[for="tab0s{{ tabcnt_v0s }}2"] {
+		border: 2px solid var(--highlight);
+	}
+	#tab0s{{ tabcnt_v0s }}1:checked ~ .panels #panel0s{{ tabcnt_v0s }}1,
+	#tab0s{{ tabcnt_v0s }}2:checked ~ .panels #panel0s{{ tabcnt_v0s }}2 {
+		display: block;
+		padding: 0.3rem 0.3rem;
+		border: 2px solid var(--highlight);
+		border-radius: 6px 6px 0 0;
+		border-bottom: 2px solid var(--highlight);
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+		margin: 3px;
+	}
+</style>
+
+<div class="tabs">
+	<input type="radio" name="tab0s{{ tabcnt_v0s }}" id="tab0s{{ tabcnt_v0s }}1" checked/>
+	<input type="radio" name="tab0s{{ tabcnt_v0s }}" id="tab0s{{ tabcnt_v0s }}2"/>
+
+	<div class="tab-bar">
+		<label for="tab0s{{ tabcnt_v0s }}1">Non-Switch</label>
+		<label for="tab0s{{ tabcnt_v0s }}2">Switch</label>
+	</div>
+	<div class="panels">
+		<div class="panel" id="panel0s{{ tabcnt_v0s }}1">
+			<pre>{%include out/{{include.payload}}_{{include.game}}_{{include.lang}}.md %}</pre>
+		</div>
+		<div class="panel" id="panel0s{{ tabcnt_v0s }}2">
+			<pre>{%include out/{{include.payload}}_{{include.game}}Switch_{{include.lang}}.md %}</pre>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,64 @@
+{% capture _ %}{% increment tabcnt %}{% endcapture %}
+<style>
+	#tab{{ tabcnt }}1:checked ~ .tab-bar label[for="tab{{ tabcnt }}1"],
+	#tab{{ tabcnt }}2:checked ~ .tab-bar label[for="tab{{ tabcnt }}2"],
+	#tab{{ tabcnt }}3:checked ~ .tab-bar label[for="tab{{ tabcnt }}3"],
+	#tab{{ tabcnt }}4:checked ~ .tab-bar label[for="tab{{ tabcnt }}4"],
+	#tab{{ tabcnt }}5:checked ~ .tab-bar label[for="tab{{ tabcnt }}5"],
+	#tab{{ tabcnt }}7:checked ~ .tab-bar label[for="tab{{ tabcnt }}7"] {
+		border: 2px solid var(--highlight);
+	}
+	#tab{{ tabcnt }}1:checked ~ .panels #panel{{ tabcnt }}1,
+	#tab{{ tabcnt }}2:checked ~ .panels #panel{{ tabcnt }}2,
+	#tab{{ tabcnt }}3:checked ~ .panels #panel{{ tabcnt }}3,
+	#tab{{ tabcnt }}4:checked ~ .panels #panel{{ tabcnt }}4,
+	#tab{{ tabcnt }}5:checked ~ .panels #panel{{ tabcnt }}5,
+	#tab{{ tabcnt }}7:checked ~ .panels #panel{{ tabcnt }}7 {
+		display: block;
+		padding: 0.3rem 0.3rem;
+		border: 2px solid var(--highlight);
+		border-radius: 6px 6px 0 0;
+		border-bottom: 2px solid var(--highlight);
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+		margin: 3px;
+	}
+</style>
+
+<div class="tabs">
+	<input type="radio" name="tab{{ tabcnt }}" id="tab{{ tabcnt }}1"/>
+	<input type="radio" name="tab{{ tabcnt }}" id="tab{{ tabcnt }}2" checked/>
+	<input type="radio" name="tab{{ tabcnt }}" id="tab{{ tabcnt }}3"/>
+	<input type="radio" name="tab{{ tabcnt }}" id="tab{{ tabcnt }}4"/>
+	<input type="radio" name="tab{{ tabcnt }}" id="tab{{ tabcnt }}5"/>
+	<input type="radio" name="tab{{ tabcnt }}" id="tab{{ tabcnt }}7"/>
+
+	<div class="tab-bar">
+		<label for="tab{{ tabcnt }}1">Japanese</label>
+		<label for="tab{{ tabcnt }}2">English</label>
+		<label for="tab{{ tabcnt }}3">French</label>
+		<label for="tab{{ tabcnt }}4">Italian</label>
+		<label for="tab{{ tabcnt }}5">German</label>
+		<label for="tab{{ tabcnt }}7">Spanish</label>
+	</div>
+	<div class="panels">
+		<div class="panel" id="panel{{ tabcnt }}1">
+			<pre>{%-include out/nicky_Emerald_jp.md-%}</pre>
+		</div>
+		<div class="panel" id="panel{{ tabcnt }}2">
+			<pre>{%-include out/nicky_Emerald_en.md-%}</pre>
+		</div>
+		<div class="panel" id="panel{{ tabcnt }}3">
+			<pre>{%-include out/nicky_Emerald_fr.md-%}</pre>
+		</div>
+		<div class="panel" id="panel{{ tabcnt }}4">
+			<pre>{%-include out/nicky_Emerald_it.md-%}</pre>
+		</div>
+		<div class="panel" id="panel{{ tabcnt }}5">
+			<pre>{%-include out/nicky_Emerald_de.md-%}</pre>
+		</div>
+		<div class="panel" id="panel{{ tabcnt }}7">
+			<pre>{%-include out/nicky_Emerald_es.md-%}</pre>
+		</div>
+	</div>
+</div>

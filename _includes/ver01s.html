@@ -1,0 +1,43 @@
+{% capture _ %}{% increment tabcnt_v01s %}{% endcapture %}
+<style>
+	#tab01s{{ tabcnt_v01s }}1:checked ~ .tab-bar label[for="tab01s{{ tabcnt_v01s }}1"],
+	#tab01s{{ tabcnt_v01s }}2:checked ~ .tab-bar label[for="tab01s{{ tabcnt_v01s }}2"],
+	#tab01s{{ tabcnt_v01s }}3:checked ~ .tab-bar label[for="tab01s{{ tabcnt_v01s }}3"] {
+		border: 2px solid var(--highlight);
+	}
+	#tab01s{{ tabcnt_v01s }}1:checked ~ .panels #panel01s{{ tabcnt_v01s }}1,
+	#tab01s{{ tabcnt_v01s }}2:checked ~ .panels #panel01s{{ tabcnt_v01s }}2,
+	#tab01s{{ tabcnt_v01s }}3:checked ~ .panels #panel01s{{ tabcnt_v01s }}3 {
+		display: block;
+		padding: 0.3rem 0.3rem;
+		border: 2px solid var(--highlight);
+		border-radius: 6px 6px 0 0;
+		border-bottom: 2px solid var(--highlight);
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+		margin: 3px;
+	}
+</style>
+
+<div class="tabs">
+	<input type="radio" name="tab01s{{ tabcnt_v01s }}" id="tab01s{{ tabcnt_v01s }}1" checked/>
+	<input type="radio" name="tab01s{{ tabcnt_v01s }}" id="tab01s{{ tabcnt_v01s }}2"/>
+	<input type="radio" name="tab01s{{ tabcnt_v01s }}" id="tab01s{{ tabcnt_v01s }}3"/>
+
+	<div class="tab-bar">
+		<label for="tab01s{{ tabcnt_v01s }}1">1.0</label>
+		<label for="tab01s{{ tabcnt_v01s }}2">1.1</label>
+		<label for="tab01s{{ tabcnt_v01s }}3">Switch</label>
+	</div>
+	<div class="panels">
+		<div class="panel" id="panel01s{{ tabcnt_v01s }}1">
+			<pre>{%include out/{{include.payload}}_{{include.game}}_{{include.lang}}.md %}</pre>
+		</div>
+		<div class="panel" id="panel01s{{ tabcnt_v01s }}2">
+			<pre>{%include out/{{include.payload}}_{{include.game}}_{{include.lang}}_1.md %}</pre>
+		</div>
+		<div class="panel" id="panel01s{{ tabcnt_v01s }}3">
+			<pre>{%include out/{{include.payload}}_{{include.game}}Switch_{{include.lang}}.md %}</pre>
+		</div>
+	</div>
+</div>

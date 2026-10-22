@@ -1,0 +1,36 @@
+{% capture _ %}{% increment tabcnt_v01 %}{% endcapture %}
+<style>
+	#tab01{{ tabcnt_v01 }}1:checked ~ .tab-bar label[for="tab01{{ tabcnt_v01 }}1"],
+	#tab01{{ tabcnt_v01 }}2:checked ~ .tab-bar label[for="tab01{{ tabcnt_v01 }}2"] {
+		border: 2px solid var(--highlight);
+	}
+	#tab01{{ tabcnt_v01 }}1:checked ~ .panels #panelt{{ tabcnt_v01 }}1,
+	#tab01{{ tabcnt_v01 }}2:checked ~ .panels #panelt{{ tabcnt_v01 }}2 {
+		display: block;
+		padding: 0.3rem 0.3rem;
+		border: 2px solid var(--highlight);
+		border-radius: 6px 6px 0 0;
+		border-bottom: 2px solid var(--highlight);
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+		margin: 3px;
+	}
+</style>
+
+<div class="tabs">
+	<input type="radio" name="tab01{{ tabcnt_v01 }}" id="tab01{{ tabcnt_v01 }}1" checked/>
+	<input type="radio" name="tab01{{ tabcnt_v01 }}" id="tab01{{ tabcnt_v01 }}2"/>
+
+	<div class="tab-bar">
+		<label for="tab01{{ tabcnt_v01 }}1">1.0</label>
+		<label for="tab01{{ tabcnt_v01 }}2">1.1</label>
+	</div>
+	<div class="panels">
+		<div class="panel" id="panelt{{ tabcnt_v01 }}1">
+			<pre>{%include out/{{include.payload}}_{{include.game}}_{{include.lang}}.md %}</pre>
+		</div>
+		<div class="panel" id="panelt{{ tabcnt_v01 }}2">
+			<pre>{%include out/{{include.payload}}_{{include.game}}_{{include.lang}}_1.md %}</pre>
+		</div>
+	</div>
+</div>

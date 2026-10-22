@@ -1,0 +1,46 @@
+{% capture _ %}{% increment tabcnt %}{% endcapture %}
+<style>
+	#tab{{ tabcnt }}1:checked ~ .tab-bar label[for="tab{{ tabcnt }}1"],
+	#tab{{ tabcnt }}2:checked ~ .tab-bar label[for="tab{{ tabcnt }}2"],
+	#tab{{ tabcnt }}3:checked ~ .tab-bar label[for="tab{{ tabcnt }}3"] {
+		border: 2px solid var(--highlight);
+	}
+	#tab{{ tabcnt }}1:checked ~ .panels #panel{{ tabcnt }}1,
+	#tab{{ tabcnt }}2:checked ~ .panels #panel{{ tabcnt }}2,
+	#tab{{ tabcnt }}3:checked ~ .panels #panel{{ tabcnt }}3 {
+		display: block;
+		padding: 0.3rem 0.3rem;
+		border: 2px solid var(--border);
+		border-radius: 6px 6px 0 0;
+		border-bottom: 2px solid var(--border);
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+		margin: 3px;
+	}
+</style>
+
+<details>
+	<summary>Thumb/ARM Multiplexer (T×A)</summary>
+	<div class="tabs">
+		<input type="radio" name="tab{{ tabcnt }}" id="tab{{ tabcnt }}1" checked/>
+		<input type="radio" name="tab{{ tabcnt }}" id="tab{{ tabcnt }}2"/>
+		<input type="radio" name="tab{{ tabcnt }}" id="tab{{ tabcnt }}3"/>
+
+		<div class="tab-bar">
+			<label for="tab{{ tabcnt }}1">Emerald</label>
+			<label for="tab{{ tabcnt }}2">Firered/Leafgreen</label>
+			<label for="tab{{ tabcnt }}3">Ruby/Sapphire</label>
+		</div>
+		<div class="panels">
+			<div class="panel" id="panel{{ tabcnt }}1">
+				<pre>{%-include out/strap_Emerald.md-%}</pre>
+			</div>
+			<div class="panel" id="panel{{ tabcnt }}2">
+				<pre>{%-include out/strap_FRLG.md-%}</pre>
+			</div>
+			<div class="panel" id="panel{{ tabcnt }}3">
+				<pre>{%-include out/strap_RS.md-%}</pre>
+			</div>
+		</div>
+	</div>
+</details>

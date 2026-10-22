@@ -1,0 +1,55 @@
+<style>
+	:root {
+		--border: #333;
+		--highlight: #eee;
+		--background: #111;
+	}
+	details {
+		border: 2px solid var(--border);
+		border-radius: 8px;
+		padding: 12px;
+		background: var(--background);
+	}
+	details[open] summary {
+		margin-bottom: 0.5rem;
+	}
+	.tabs input[type="radio"] {
+		display: none;
+	}
+	.tab-bar {
+		display: flex;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		overflow-y: hidden;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		-webkit-mask-image: linear-gradient(to right, 
+			rgba(0,0,0,0.1) 0%,
+			black 10px,
+			black calc(100% - 10px),
+			rgba(0,0,0,0.1) 100%
+		);
+		mask-image: linear-gradient(to right,
+			rgba(0,0,0,0.1) 0%,
+			black 10px,
+			black calc(100% - 10px),
+			rgba(0,0,0,0.1) 100%
+		);
+	}
+	.tab-bar::-webkit-scrollbar {
+		display: none;
+	}
+	.tab-bar label {
+		padding: 0.3rem 0.3rem;
+		border: 2px solid var(--border);
+		border-radius: 6px 6px 0 0;
+		border-bottom: 2px solid var(--border);
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+		margin: 3px;
+		transition: background 0.5s;
+	}
+	.panel {
+		display: none;
+	}
+</style>

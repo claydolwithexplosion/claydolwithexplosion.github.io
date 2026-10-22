@@ -1,0 +1,47 @@
+{% capture _ %}{% increment tabcnt %}{% endcapture %}
+{% assign l1cnt = tabcnt %}
+<style>
+	#tab{{ l1cnt }}1:checked ~ .tab-bar label[for="tab{{ l1cnt }}1"],
+	#tab{{ l1cnt }}2:checked ~ .tab-bar label[for="tab{{ l1cnt }}2"],
+	#tab{{ l1cnt }}3:checked ~ .tab-bar label[for="tab{{ l1cnt }}3"] {
+		border: 2px solid var(--highlight);
+	}
+	#tab{{ l1cnt }}1:checked ~ .panels #panel{{ l1cnt }}1,
+	#tab{{ l1cnt }}2:checked ~ .panels #panel{{ l1cnt }}2,
+	#tab{{ l1cnt }}3:checked ~ .panels #panel{{ l1cnt }}3 {
+		display: block;
+		padding: 0.3rem 0.3rem;
+		border: 2px solid var(--border);
+		border-radius: 6px 6px 0 0;
+		border-bottom: 2px solid var(--border);
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+		margin: 3px;
+	}
+</style>
+
+<details open>
+	<summary>Base64 writer (WELDR)</summary>
+	<div class="tabs">
+		<input type="radio" name="tab{{ l1cnt }}" id="tab{{ l1cnt }}1" checked/>
+		<input type="radio" name="tab{{ l1cnt }}" id="tab{{ l1cnt }}2"/>
+		<input type="radio" name="tab{{ l1cnt }}" id="tab{{ l1cnt }}3"/>
+	
+		<div class="tab-bar">
+			<label for="tab{{ l1cnt }}1">Emerald</label>
+			<label for="tab{{ l1cnt }}2">Firered/Leafgreen</label>
+			<label for="tab{{ l1cnt }}3">Ruby/Sapphire</label>
+		</div>
+		<div class="panels">
+<div class="panel" id="panel{{ l1cnt }}1">
+{%-include weldr_emerald.html-%}
+</div>
+<div class="panel" id="panel{{ l1cnt }}2">
+{%-include weldr_frlg.html-%}
+</div>
+<div class="panel" id="panel{{ l1cnt }}3">
+{%-include weldr_rs.html-%}
+</div>
+		</div>
+	</div>
+</details>

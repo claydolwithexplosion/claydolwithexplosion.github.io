@@ -1,0 +1,61 @@
+{% capture _ %}{% increment tabcnt %}{% endcapture %}
+{% assign localcnt = tabcnt %}
+<style>
+	#tab{{ localcnt }}1:checked ~ .tab-bar label[for="tab{{ localcnt }}1"],
+	#tab{{ localcnt }}2:checked ~ .tab-bar label[for="tab{{ localcnt }}2"],
+	#tab{{ localcnt }}3:checked ~ .tab-bar label[for="tab{{ localcnt }}3"],
+	#tab{{ localcnt }}4:checked ~ .tab-bar label[for="tab{{ localcnt }}4"],
+	#tab{{ localcnt }}5:checked ~ .tab-bar label[for="tab{{ localcnt }}5"] {
+		border: 2px solid var(--highlight);
+	}
+	#tab{{ localcnt }}1:checked ~ .panels #panel{{ localcnt }}1,
+	#tab{{ localcnt }}2:checked ~ .panels #panel{{ localcnt }}2,
+	#tab{{ localcnt }}3:checked ~ .panels #panel{{ localcnt }}3,
+	#tab{{ localcnt }}4:checked ~ .panels #panel{{ localcnt }}4,
+	#tab{{ localcnt }}5:checked ~ .panels #panel{{ localcnt }}5 {
+		display: block;
+		padding: 0.3rem 0.3rem;
+		border: 2px solid var(--border);
+		border-radius: 6px 6px 0 0;
+		border-bottom: 2px solid var(--border);
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+		margin: 3px;
+	}
+</style>
+
+<details>
+	<summary>Intermediate Writer (W)</summary>
+	<div class="tabs">
+		<input type="radio" name="tab{{ localcnt }}" id="tab{{ localcnt }}1" checked/>
+		<input type="radio" name="tab{{ localcnt }}" id="tab{{ localcnt }}2"/>
+		<input type="radio" name="tab{{ localcnt }}" id="tab{{ localcnt }}3"/>
+		<input type="radio" name="tab{{ localcnt }}" id="tab{{ localcnt }}4"/>
+		<input type="radio" name="tab{{ localcnt }}" id="tab{{ localcnt }}5"/>
+	
+		<div class="tab-bar">
+			<label for="tab{{ localcnt }}1">Emerald</label>
+			<label for="tab{{ localcnt }}2">Firered</label>
+			<label for="tab{{ localcnt }}3">Leafgreen</label>
+			<label for="tab{{ localcnt }}4">Ruby</label>
+			<label for="tab{{ localcnt }}5">Sapphire</label>
+		</div>
+		<div class="panels">
+			<div class="panel" id="panel{{ localcnt }}1">
+				{%-include w_emerald.html-%}
+			</div>
+			<div class="panel" id="panel{{ localcnt }}2">
+				{%-include w_firered.html-%}
+			</div>
+			<div class="panel" id="panel{{ localcnt }}3">
+				{%-include w_leafgreen.html-%}
+			</div>
+			<div class="panel" id="panel{{ localcnt }}4">
+				{%-include w_ruby.html-%}
+			</div>
+			<div class="panel" id="panel{{ localcnt }}5">
+				{%-include w_sapphire.html-%}
+			</div>
+		</div>
+	</div>
+</details>
