@@ -104,7 +104,7 @@ You can find the next step [HERE](advanced.md).
 </style>
 	
 <nav class="step-cards" aria-label="Step navigation">
-	<a class="step-card step-card-right" href="advanced.md">
+	<a class="step-card step-card-right" href="advanced.html">
 		<span>Next</span>
 		<span>→</span>
 	</a>
