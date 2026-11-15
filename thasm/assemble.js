@@ -937,7 +937,7 @@ function emit(tree,errors,optional) {
 							errors.push({type:"error",kind:"Can't have immediates with more than 8 bits",token:tk});
 							return [];
 						}
-						return [{size:2,val:(0x2000 | (tree.kind == "movs" ? 0x000 : 0x800) | (rd << 8) | (rn << 0))}];
+						return [{size:2,val:(0x2000 | (tree.kind == "movs" ? 0x000 : 0x800) | (rd << 8) | (rm << 0))}];
 					} else if (tree.form == "register" && (rd >= 8 || rn >= 8)) {
 						return [{size:2,val:(0x4000 | (tree.kind == "movs" ? 0x600 : 0x500) | ((rd & 8) << 4) | (rn << 3) | ((rd & 7) << 3))}]
 					}
