@@ -562,18 +562,24 @@ function parse_mem_instr(tokens,errors) {
 
 	tk = tokens.shift();
 	if (!tk) {
-		errors.push({type:"error",kind:"expected comma before end of file",token:origin});
-	} else if (tk.type != "symbol" || tk.kind != "comma") {
-		errors.push({type:"warning",kind:"expected comma after rd",token:origin});
+		errors.push({type:"error",kind:"expected comma or closing bracket before end of file",token:origin});
+	} else if (tk.type != "symbol" || (tk.kind != "comma" && tk.kind != "rbrack")) {
+		errors.push({type:"warning",kind:"expected comma or closing bracket after rd",token:origin});
 		tokens.unshift(tk);
 	}
 
-	let rm = parse_expr(tokens,errors);
-	if (!rm) {
-		errors.push({type:"error",kind:"couldn't find third operand",token:origin});
-	} else if (rm.type == "reg") {
-		form = "register";
-	} else if (rm.type == "int") {
+	let rm
+	if (tk.type == "symbol" && tk.kind == "comma") {
+		rm = parse_expr(tokens,errors);
+		if (!rm) {
+			errors.push({type:"error",kind:"couldn't find third operand",token:origin});
+		} else if (rm.type == "reg") {
+			form = "register";
+		} else if (rm.type == "int") {
+			form = "immediate";
+		}
+	} else if (tk.type == "symbol" && tk.kind == "rbrack") {
+		rm = {kind:"integer",type:"int",val:0};
 		form = "immediate";
 	}
 
