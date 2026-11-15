@@ -7,7 +7,7 @@ const regices = [
 	// Whitespaces
 	[/^[ \t\r]+/i, {type:"whitespace",ignore:true}],
 	[/^\n/i, {type:"whitespace",newline:true,ignore:true}],
-	[/^[;@][^\n]*/i, {type:"comment",newline:true,ignore:true}],
+	[/^[;@][^\n]*/i, {type:"comment",newline:false,ignore:true}],
 
 	// Literals
 	[/^#?0b([01]+)/i, {type:"int_literal",kind:"bin_literal"}],
