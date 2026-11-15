@@ -5,181 +5,182 @@
 
 const regices = [
 	// Whitespaces
-	["^[ \t\r]+", {type:"whitespace",ignore:true}],
-	["^\n", {type:"whitespace",newline:true,ignore:true}],
-	["^[;@].*?\n", {type:"comment",newline:true,ignore:true}],
+	[/^[ \t\r]+/i, {type:"whitespace",ignore:true}],
+	[/^\n/i, {type:"whitespace",newline:true,ignore:true}],
+	[/^[;@][^\n]*/i, {type:"comment",newline:true,ignore:true}],
 
 	// Literals
-	["^#?0b([01]+)", {type:"int_literal",kind:"bin_literal"}],
-	["^#?0o([0-8]+)", {type:"int_literal",kind:"oct_literal"}],
-	["^#?0x([0-9A-Fa-f]+)", {type:"int_literal",kind:"hex_literal"}],
-	["^#([+-]0x[0-9A-Fa-f]+)", {type:"int_literal",kind:"hex_literal"}],
-	["^#?([0-9]+)", {type:"int_literal",kind:"dec_literal"}],
-	["^#([+-][0-9]+)", {type:"int_literal",kind:"dec_literal"}],
+	[/^#?0b([01]+)/i, {type:"int_literal",kind:"bin_literal"}],
+	[/^#?0o([0-8]+)/i, {type:"int_literal",kind:"oct_literal"}],
+	[/^#?0x([0-9A-Fa-f]+)/i, {type:"int_literal",kind:"hex_literal"}],
+	[/^#([+-]0x[0-9A-Fa-f]+)/i, {type:"int_literal",kind:"hex_literal"}],
+	[/^#?([0-9]+)/i, {type:"int_literal",kind:"dec_literal"}],
+	[/^#([+-][0-9]+)/i, {type:"int_literal",kind:"dec_literal"}],
 
 	// Registers
-	["^r10", {type:"register",val:10}],
-	["^r11", {type:"register",val:11}],
-	["^r12", {type:"register",val:12}],
-	["^r13", {type:"register",val:13}],
-	["^r14", {type:"register",val:14}],
-	["^r15", {type:"register",val:15}],
-	["^r0", {type:"register",val:0}],
-	["^r1", {type:"register",val:1}],
-	["^r2", {type:"register",val:2}],
-	["^r3", {type:"register",val:3}],
-	["^r4", {type:"register",val:4}],
-	["^r5", {type:"register",val:5}],
-	["^r6", {type:"register",val:6}],
-	["^r7", {type:"register",val:7}],
-	["^r8", {type:"register",val:8}],
-	["^r9", {type:"register",val:9}],
-	["^ip", {type:"register",val:12}],
-	["^sp", {type:"register",val:13}],
-	["^lr", {type:"register",val:14}],
-	["^pc", {type:"register",val:15}],
+	[/^r10/i, {type:"register",val:10}],
+	[/^r11/i, {type:"register",val:11}],
+	[/^r12/i, {type:"register",val:12}],
+	[/^r13/i, {type:"register",val:13}],
+	[/^r14/i, {type:"register",val:14}],
+	[/^r15/i, {type:"register",val:15}],
+	[/^r0/i, {type:"register",val:0}],
+	[/^r1/i, {type:"register",val:1}],
+	[/^r2/i, {type:"register",val:2}],
+	[/^r3/i, {type:"register",val:3}],
+	[/^r4/i, {type:"register",val:4}],
+	[/^r5/i, {type:"register",val:5}],
+	[/^r6/i, {type:"register",val:6}],
+	[/^r7/i, {type:"register",val:7}],
+	[/^r8/i, {type:"register",val:8}],
+	[/^r9/i, {type:"register",val:9}],
+	[/^ip/i, {type:"register",val:12}],
+	[/^sp/i, {type:"register",val:13}],
+	[/^lr/i, {type:"register",val:14}],
+	[/^pc/i, {type:"register",val:15}],
 
 	// Operators
-	["^\\?", {type:"operator",kind:"sel"}],
-	["^\\+", {type:"operator",kind:"add"}],
-	["^\\-", {type:"operator",kind:"sub"}],
-	["^\\*", {type:"operator",kind:"mul"}],
-	["^\\/", {type:"operator",kind:"div"}],
-	["^\\%", {type:"operator",kind:"mod"}],
-	["^\\&", {type:"operator",kind:"and"}],
-	["^\\|", {type:"operator",kind:"or"}],
-	["^\\^", {type:"operator",kind:"xor"}],
-	["^\\<\\<", {type:"operator",kind:"lsl"}],
-	["^\\>\\>", {type:"operator",kind:"lsr"}],
-	["^\\>\\>\\-", {type:"operator",kind:"asr"}],
-	["^\\>\\>\\>", {type:"operator",kind:"ror"}],
-	["^\\<\\=", {type:"operator",kind:"le"}],
-	["^\\<", {type:"operator",kind:"lt"}],
-	["^\\>\\=", {type:"operator",kind:"ge"}],
-	["^\\>", {type:"operator",kind:"gt"}],
-	["^\\=\\=", {type:"operator",kind:"eq"}],
-	["^\\!\\=", {type:"operator",kind:"neq"}],
-	["^\\!", {type:"operator",kind:"not"}],
+	[/^\?/i, {type:"operator",kind:"sel"}],
+	[/^\+/i, {type:"operator",kind:"add"}],
+	[/^\-/i, {type:"operator",kind:"sub"}],
+	[/^\*/i, {type:"operator",kind:"mul"}],
+	[/^\//i, {type:"operator",kind:"div"}],
+	[/^\%/i, {type:"operator",kind:"mod"}],
+	[/^\&/i, {type:"operator",kind:"and"}],
+	[/^\|/i, {type:"operator",kind:"or"}],
+	[/^\^/i, {type:"operator",kind:"xor"}],
+	[/^\<\</i, {type:"operator",kind:"lsl"}],
+	[/^\>\>/i, {type:"operator",kind:"lsr"}],
+	[/^\>\>\-/i, {type:"operator",kind:"asr"}],
+	[/^\>\>\>/i, {type:"operator",kind:"ror"}],
+	[/^\<\=/i, {type:"operator",kind:"le"}],
+	[/^\</i, {type:"operator",kind:"lt"}],
+	[/^\>\=/i, {type:"operator",kind:"ge"}],
+	[/^\>/i, {type:"operator",kind:"gt"}],
+	[/^\=\=/i, {type:"operator",kind:"eq"}],
+	[/^\!\=/i, {type:"operator",kind:"neq"}],
+	[/^\!/i, {type:"operator",kind:"not"}],
 
 	// Symbols
-	["^\\:", {type:"symbol",kind:"colon"}],
-	["^\\,", {type:"symbol",kind:"comma"}],
-	["^\\(", {type:"symbol",kind:"lparen"}],
-	["^\\)", {type:"symbol",kind:"rparen"}],
-	["^\\[", {type:"symbol",kind:"lbrack"}],
-	["^\\]", {type:"symbol",kind:"rbrack"}],
-	["^\\{", {type:"symbol",kind:"lbrace"}],
-	["^\\}", {type:"symbol",kind:"rbrace"}],
+	[/^\:/i, {type:"symbol",kind:"colon"}],
+	[/^\,/i, {type:"symbol",kind:"comma"}],
+	[/^\(/i, {type:"symbol",kind:"lparen"}],
+	[/^\)/i, {type:"symbol",kind:"rparen"}],
+	[/^\[/i, {type:"symbol",kind:"lbrack"}],
+	[/^\]/i, {type:"symbol",kind:"rbrack"}],
+	[/^\{/i, {type:"symbol",kind:"lbrace"}],
+	[/^\}/i, {type:"symbol",kind:"rbrace"}],
 
 	// Shifts
-	["^lsls?", {type:"mnemonic",kind:"lsls"}],
-	["^lsrs?", {type:"mnemonic",kind:"lsrs"}],
-	["^asrs?", {type:"mnemonic",kind:"asrs"}],
+	[/^lsls?/i, {type:"mnemonic",kind:"lsls"}],
+	[/^lsrs?/i, {type:"mnemonic",kind:"lsrs"}],
+	[/^asrs?/i, {type:"mnemonic",kind:"asrs"}],
 
 	// Immediate and 3-register data processing
-	["^adds?", {type:"mnemonic",kind:"adds"}],
-	["^subs?", {type:"mnemonic",kind:"subs"}],
-	["^movs?", {type:"mnemonic",kind:"movs"}],
-	["^cmp", {type:"mnemonic",kind:"cmp"}],
+	[/^adds?/i, {type:"mnemonic",kind:"adds"}],
+	[/^subs?/i, {type:"mnemonic",kind:"subs"}],
+	[/^movs?/i, {type:"mnemonic",kind:"movs"}],
+	[/^cmp/i, {type:"mnemonic",kind:"cmp"}],
 
 	// 2-register Data processing
-	["^adcs?", {type:"mnemonic",kind:"adcs"}],
-	["^sbcs?", {type:"mnemonic",kind:"sbcs"}],
-	["^bics?", {type:"mnemonic",kind:"bics"}],
-	["^ands?", {type:"mnemonic",kind:"ands"}],
-	["^orrs?", {type:"mnemonic",kind:"orrs"}],
-	["^eors?", {type:"mnemonic",kind:"eors"}],
-	["^xors?", {type:"mnemonic",kind:"eors"}],
-	["^negs?", {type:"mnemonic",kind:"negs"}],
-	["^rsbs?", {type:"mnemonic",kind:"negs"}],
-	["^mvns?", {type:"mnemonic",kind:"mvns"}],
-	["^cmn", {type:"mnemonic",kind:"cmn"}],
-	["^tst", {type:"mnemonic",kind:"tst"}],
-	["^muls?", {type:"mnemonic",kind:"muls"}],
-	["^rors?", {type:"mnemonic",kind:"rors"}],
+	[/^adcs?/i, {type:"mnemonic",kind:"adcs"}],
+	[/^sbcs?/i, {type:"mnemonic",kind:"sbcs"}],
+	[/^bics?/i, {type:"mnemonic",kind:"bics"}],
+	[/^ands?/i, {type:"mnemonic",kind:"ands"}],
+	[/^orrs?/i, {type:"mnemonic",kind:"orrs"}],
+	[/^eors?/i, {type:"mnemonic",kind:"eors"}],
+	[/^xors?/i, {type:"mnemonic",kind:"eors"}],
+	[/^negs?/i, {type:"mnemonic",kind:"negs"}],
+	[/^rsbs?/i, {type:"mnemonic",kind:"negs"}],
+	[/^mvns?/i, {type:"mnemonic",kind:"mvns"}],
+	[/^cmn/i, {type:"mnemonic",kind:"cmn"}],
+	[/^tst/i, {type:"mnemonic",kind:"tst"}],
+	[/^muls?/i, {type:"mnemonic",kind:"muls"}],
+	[/^rors?/i, {type:"mnemonic",kind:"rors"}],
 
 	// Memory
-	["^ldrsh", {type:"mnemonic",kind:"ldrsh"}],
-	["^ldrsb", {type:"mnemonic",kind:"ldrsb"}],
-	["^strb", {type:"mnemonic",kind:"strb"}],
-	["^ldrb", {type:"mnemonic",kind:"ldrb"}],
-	["^strh", {type:"mnemonic",kind:"strh"}],
-	["^ldrh", {type:"mnemonic",kind:"ldrh"}],
-	["^str", {type:"mnemonic",kind:"str"}],
-	["^ldr", {type:"mnemonic",kind:"ldr"}],
+	[/^ldrsh/i, {type:"mnemonic",kind:"ldrsh"}],
+	[/^ldrsb/i, {type:"mnemonic",kind:"ldrsb"}],
+	[/^strb/i, {type:"mnemonic",kind:"strb"}],
+	[/^ldrb/i, {type:"mnemonic",kind:"ldrb"}],
+	[/^strh/i, {type:"mnemonic",kind:"strh"}],
+	[/^ldrh/i, {type:"mnemonic",kind:"ldrh"}],
+	[/^str/i, {type:"mnemonic",kind:"str"}],
+	[/^ldr/i, {type:"mnemonic",kind:"ldr"}],
 
 	// Special
-	["^adr", {type:"mnemonic",kind:"adr"}],
+	[/^adr/i, {type:"mnemonic",kind:"adr"}],
 
-	["^push", {type:"mnemonic",kind:"push"}],
-	["^pop", {type:"mnemonic",kind:"pop"}],
-	["^stmia", {type:"mnemonic",kind:"stm"}],
-	["^ldmia", {type:"mnemonic",kind:"ldm"}],
-	["^stm", {type:"mnemonic",kind:"stm"}],
-	["^ldm", {type:"mnemonic",kind:"ldm"}],
+	[/^push/i, {type:"mnemonic",kind:"push"}],
+	[/^pop/i, {type:"mnemonic",kind:"pop"}],
+	[/^stmia/i, {type:"mnemonic",kind:"stm"}],
+	[/^ldmia/i, {type:"mnemonic",kind:"ldm"}],
+	[/^stm/i, {type:"mnemonic",kind:"stm"}],
+	[/^ldm/i, {type:"mnemonic",kind:"ldm"}],
 
-	["^swi", {type:"mnemonic",kind:"svc"}],
-	["^svc", {type:"mnemonic",kind:"svc"}],
+	[/^swi/i, {type:"mnemonic",kind:"svc"}],
+	[/^svc/i, {type:"mnemonic",kind:"svc"}],
 
 	// Branches
-	["^beq", {type:"mnemonic",kind:"bcond",val:0}],
-	["^bne", {type:"mnemonic",kind:"bcond",val:1}],
-	["^bcs", {type:"mnemonic",kind:"bcond",val:2}],
-	["^bhs", {type:"mnemonic",kind:"bcond",val:2}],
-	["^bcc", {type:"mnemonic",kind:"bcond",val:3}],
-	["^blo", {type:"mnemonic",kind:"bcond",val:3}],
-	["^bmi", {type:"mnemonic",kind:"bcond",val:4}],
-	["^bpl", {type:"mnemonic",kind:"bcond",val:5}],
-	["^bvs", {type:"mnemonic",kind:"bcond",val:6}],
-	["^bvc", {type:"mnemonic",kind:"bcond",val:7}],
-	["^bhi", {type:"mnemonic",kind:"bcond",val:8}],
-	["^bls", {type:"mnemonic",kind:"bcond",val:9}],
-	["^bge", {type:"mnemonic",kind:"bcond",val:10}],
-	["^blt", {type:"mnemonic",kind:"bcond",val:11}],
-	["^bgt", {type:"mnemonic",kind:"bcond",val:12}],
-	["^ble", {type:"mnemonic",kind:"bcond",val:13}],
-	["^bal", {type:"mnemonic",kind:"bcond",val:14}],
-	["^b", {type:"mnemonic",kind:"b"}],
+	[/^bx/i, {type:"mnemonic",kind:"bx"}],
+	[/^beq/i, {type:"mnemonic",kind:"bcond",val:0}],
+	[/^bne/i, {type:"mnemonic",kind:"bcond",val:1}],
+	[/^bcs/i, {type:"mnemonic",kind:"bcond",val:2}],
+	[/^bhs/i, {type:"mnemonic",kind:"bcond",val:2}],
+	[/^bcc/i, {type:"mnemonic",kind:"bcond",val:3}],
+	[/^blo/i, {type:"mnemonic",kind:"bcond",val:3}],
+	[/^bmi/i, {type:"mnemonic",kind:"bcond",val:4}],
+	[/^bpl/i, {type:"mnemonic",kind:"bcond",val:5}],
+	[/^bvs/i, {type:"mnemonic",kind:"bcond",val:6}],
+	[/^bvc/i, {type:"mnemonic",kind:"bcond",val:7}],
+	[/^bhi/i, {type:"mnemonic",kind:"bcond",val:8}],
+	[/^bls/i, {type:"mnemonic",kind:"bcond",val:9}],
+	[/^bge/i, {type:"mnemonic",kind:"bcond",val:10}],
+	[/^blt/i, {type:"mnemonic",kind:"bcond",val:11}],
+	[/^bgt/i, {type:"mnemonic",kind:"bcond",val:12}],
+	[/^ble/i, {type:"mnemonic",kind:"bcond",val:13}],
+	[/^bal/i, {type:"mnemonic",kind:"bcond",val:14}],
+	[/^(b)[^\w]/i, {type:"mnemonic",kind:"b"}],
 
 	// Raw bytes
-	["^raw1", {type:"mnemonic",kind:"raw",val:1}],
-	["^raw2", {type:"mnemonic",kind:"raw",val:2}],
-	["^raw4", {type:"mnemonic",kind:"raw",val:4}],
+	[/^raw1/i, {type:"mnemonic",kind:"raw",val:1}],
+	[/^raw2/i, {type:"mnemonic",kind:"raw",val:2}],
+	[/^raw4/i, {type:"mnemonic",kind:"raw",val:4}],
 
-	["^.byte", {type:"mnemonic",kind:"raw",val:1}],
-	["^.short", {type:"mnemonic",kind:"raw",val:2}],
-	["^.halfword", {type:"mnemonic",kind:"raw",val:2}],
-	["^.word", {type:"mnemonic",kind:"raw",val:4}],
+	[/^.byte/i, {type:"mnemonic",kind:"raw",val:1}],
+	[/^.short/i, {type:"mnemonic",kind:"raw",val:2}],
+	[/^.halfword/i, {type:"mnemonic",kind:"raw",val:2}],
+	[/^.word/i, {type:"mnemonic",kind:"raw",val:4}],
 
-	["^.1byte", {type:"mnemonic",kind:"raw",val:1}],
-	["^.2byte", {type:"mnemonic",kind:"raw",val:2}],
-	["^.4byte", {type:"mnemonic",kind:"raw",val:4}],
+	[/^.1byte/i, {type:"mnemonic",kind:"raw",val:1}],
+	[/^.2byte/i, {type:"mnemonic",kind:"raw",val:2}],
+	[/^.4byte/i, {type:"mnemonic",kind:"raw",val:4}],
+
+	[/^([A-Za-z_][A-Za-z_0-9]*):/i, {type:"label"}],
 
 	// Identifiers and unknown characters
-	["^[A-Za-z_][A-Za-z_0-9]*", {type:"identifier"}],
-	["^.", {type:"unknown"}],
+	[/^[A-Za-z_][A-Za-z_0-9]*/i, {type:"identifier"}],
+	[/^./i, {type:"unknown"}],
 ]
 
-function scan(raw) {
+function scan(raw, pre) {
 	let tokens = [];
 	let copy = raw;
 	let line = 1;
 	while (copy.length > 0) {
 		for (const exp of regices) {
-			// Originally I thought all regexes kept state
-			// so I made a new regex each time.
-			// It'd probably be a lot more efficient to
-			// have the regexes inside the array though.
-			const fresh = new RegExp(exp[0],"i");
+			const fresh = exp[0];
 			if (fresh.test(copy)) {
 				let tk = {...exp[1]};
 				tk.line = line;
-				tk.match = fresh.exec(copy).pop();
+				let res = fresh.exec(copy);
+				tk.raw = res[0];
+				tk.match = res.pop();
 				copy = copy.replace(fresh, "");
 				if ("newline" in tk && tk.newline) {
 					line += 1;
 				}
-				if ("ignore" in tk && tk.ignore) {
+				if (!pre && "ignore" in tk && tk.ignore) {
 					break;
 				}
 				tokens.push(tk);
@@ -423,7 +424,7 @@ function parse_3op_dpc_instr(tokens,errors) {
 	} else if (rn.type == "reg") {
 		// Look for the optional operand
 		tk = tokens.shift();
-		if (tk && (tk.type != "symbol" || tk.kind != "comma")) {
+		if (!tk || (tk.type != "symbol" || tk.kind != "comma")) {
 			// Didn't find comma, so we have 2 registers as operands
 			rm = rn;
 			rn = rd;
@@ -507,6 +508,20 @@ function parse_2reg_dpc_instr(tokens,errors) {
 	return {kind:origin.kind,type:"instr",rd:rd,rn:rd,rm:rm,token:origin};
 }
 
+function parse_bx_instr(tokens,errors) {
+	const origin = tokens.shift();
+	let rd,rn;
+
+	rd = parse_expr(tokens,errors);
+	if (!rd) {
+		errors.push({type:"error",kind:`couldn't find rd for ${origin.kind} instruction`,token:origin});
+	} else if (rd.type != "reg") {
+		errors.push({type:"error",kind:"expected rd to be a register",token:origin});
+	}
+
+	return {kind:origin.kind,type:"instr",rd:rd,token:origin};
+}
+
 function parse_mem_instr(tokens,errors) {
 	const origin = tokens.shift();
 	let form;
@@ -527,6 +542,12 @@ function parse_mem_instr(tokens,errors) {
 	tk = tokens.shift();
 	if (!tk) {
 		errors.push({type:"error",kind:"expected bracket before end of file",token:origin});
+	} else if (tk.type == "identifier") {
+		if (origin.kind == "ldr") {
+			return {kind:origin.kind,type:"instr",rd:rd,rn:tk.match,form:"label",token:origin};
+		} else {
+			errors.push({type:"error",kind:"only 'ldr' supports labels",token:origin});
+		}
 	} else if (tk.type != "symbol" || tk.kind != "lbrack") {
 		errors.push({type:"warning",kind:"expected bracket after rd",token:origin});
 		tokens.unshift(tk);
@@ -656,6 +677,10 @@ function parse_raw_instr(tokens,errors) {
 	return {kind:origin.kind,type:"instr",size:origin.val,values:values,token:origin};
 }
 
+function parse_cbranch_instr(tokens,errors) {
+	//
+}
+
 function parse_instr(tokens,errors) {
 	const tk = tokens[0];
 	if (!tk) {
@@ -713,7 +738,12 @@ function parse_instr(tokens,errors) {
 					return parse_multi_mem_instr(tokens,errors);
 				case "raw":
 					return parse_raw_instr(tokens,errors);
+				case "bx":
+					return parse_bx_instr(tokens,errors);
 			}
+		case "label":
+			const origin = tokens.shift();
+			return {type:"label",name:origin.match};
 	}
 }
 
@@ -742,10 +772,11 @@ function parse(tokens) {
 /* Just walk the tree and emit stuff I think */
 /* Later I'll probably wanna do natural alignment */
 
-function emit(tree,errors) {
-	if (!tree) {
-		errors.push({type:"warning",kind:"Trying to emit undefined value",token:null});
-		return 0;
+function emit(tree,errors,optional) {
+	if (!tree || typeof tree != "object") {
+		if (!optional)
+			errors.push({type:"warning",kind:"Trying to emit undefined value",token:null});
+		return -1;
 	}
 	const tk = tree.token;
 	switch (tree.type) {
@@ -768,9 +799,9 @@ function emit(tree,errors) {
 			}
 			let op1;
 			let op2;
-			let rd = emit(tree.rd,errors);
-			let rn = emit(tree.rn,errors);
-			let rm = emit(tree.rm,errors);
+			let rd = emit(tree.rd,errors,true);
+			let rn = emit(tree.rn,errors,true);
+			let rm = emit(tree.rm,errors,true);
 			switch (tree.kind) {
 				default:
 					break;
@@ -796,6 +827,10 @@ function emit(tree,errors) {
 					} else if (tree.form == "register") {
 						if (rd != rn && rn != rm && rm != rd) {
 							errors.push({type:"error",kind:"Can't have three different registers with shift instruction",token:tk});
+							return [];
+						}
+						if (rd >= 8 || rn >= 8 || rm >= 8) {
+							errors.push({type:"error",kind:"Can't use high registers with shift instructions",token:tk});
 							return [];
 						}
 						return [{size:2,val:((0b010000 << 10) | (op2 << 6) | (rn << 3) | (rd << 0))}];
@@ -834,8 +869,8 @@ function emit(tree,errors) {
 						}
 					}
 					else if (tree.form == "register") {
-						if (rd >= 8 || rn >= 8) {
-							if (rn != rm) {
+						if (rd >= 8 || rn >= 8 || rm >= 8) {
+							if (rd != rn) {
 								errors.push({type:"error",kind:"Can't have three different registers with high add",token:tk});
 								return [];
 							}
@@ -1099,6 +1134,8 @@ function emit(tree,errors) {
 							return [];
 						}
 						return [{size:2,val:(0x5000 | (op2 << 9) | (rm << 6) | (rn << 3) | (rd << 0))}];
+					} else if (tree.form == "label") {
+						return [{size:2,val:(0x4800 | (rd << 8)),name:tree.rn,kind:"ldr"}];
 					} else {
 						errors.push({type:"error",kind:"Got weird instruction of neither immediate nor register form",token:tk});
 						return [];
@@ -1155,6 +1192,8 @@ function emit(tree,errors) {
 						}
 					}
 					return [{size:2,val:((op1 == 0b1 ? 0xb000 : 0xc000) | (op2 << 11) | (op1 == 0b1 ? 0x400 : (rn << 8)) | (bitmask << 0))}];
+				case "bx":
+					return [{size:2,val:(0x4700 | (rd << 3))}];
 			}
 			break;
 		case "int":
@@ -1261,32 +1300,71 @@ function emit(tree,errors) {
 					}
 			}
 			break;
+		case "label":
+			return [{size:0,name:tree.name,kind:"label"}];
 		default:
 			break;
 	}
 }
 
-function align(values) {
+function handle_references(bytes, label_log, label_ref, val) {
+	if (val.name && val.kind) {
+		if (val.kind == "label") {
+			label_log.set(val.name, bytes.length);
+			let refs = label_ref.get(val.name);
+			if (refs) {
+				for (let ref of refs) {
+					if (ref.kind == "ldr") {
+						let offset = Math.ceil(bytes.length/4) - Math.floor((ref.org + 4)/4);
+						bytes[ref.org] = offset;
+					} else {
+						//
+					}
+				}
+				label_ref.delete(val.name);
+			}
+		} else {
+			if (val.kind == "ldr") {
+				if (label_log.get(val.name)) {
+					errors.push({type:"warning",kind:"'ldr' used with label that has a negative offset, ignored"});
+				}
+				let list = label_ref.get(val.name);
+				if (list) {
+					list.push({kind:"ldr",org:bytes.length});
+				} else {
+					label_ref.set(val.name, [{kind:"ldr",org:bytes.length}]);
+				}
+			} else {
+				//
+			}
+		}
+	}
+}
+
+function align(values,errors) {
 	let bytes = [];
-	let org = 0;
+	let label_log = new Map();
+	let label_ref = new Map();
 	let filler = 0x00;
 	for (const val of values) {
-		let natural = Math.ceil(org / val.size) * val.size;
-		while (org < natural) {
+		let natural = Math.ceil(bytes.length / val.size) * val.size;
+		while (bytes.length < natural) {
 			bytes.push(filler);
-			org += 1;
 		}
 		let buffer = val.val;
 		for (let i = 0; i < val.size; i += 1) {
 			bytes.push(buffer & 0xff);
 			buffer >>= 8;
 		}
+		handle_references(bytes, label_log, label_ref, val);
 	}
 	return bytes;
 }
 
 function align_jp(values) {
 	let bytes = [];
+	let label_log = new Map();
+	let label_ref = new Map();
 	let filler = 0x51;
 	for (const val of values) {
 		let natural = Math.ceil(bytes.length / val.size) * val.size;
@@ -1316,6 +1394,7 @@ function align_jp(values) {
 			}
 		}
 		bytes = bytes.concat(bytes_buffer);
+		handle_references(bytes, label_log, label_ref, val);
 	}
 	return bytes;
 }
@@ -1407,9 +1486,6 @@ function convert_jp(values) {
 }
 
 
-
-
-
 function assemble() {
 	const source = document.getElementById("source").value;
 	const tokens = scan(source);
@@ -1421,10 +1497,15 @@ function assemble() {
 	console.log(vals);
 	const bytes = align_jp(vals);
 	console.log(bytes);
-	const jp = convert_jp(bytes);
+	let jp = convert_jp(bytes);
 	console.log(jp);
+	errLines.clear();
 	for (let err of errs) {
-		console.log(err);
+		console.log(err)
+		jp += `\n${err.type} ${err.token?("at line " + err.token.line):""}: ${err.kind}`;
+		errLines.add(err.token.line);
 	}
-	document.getElementById("output").value = jp;
+	render();
+	document.getElementById("out").innerText = jp;
 }
+
